@@ -39,8 +39,6 @@
     "url": "https://github.com/hanzhanyong/vue-data-grid/issues"
   },
   "dependencies": {
-    "async-validator": "^1.7.1",
-    "core-js": "^2.5.0",
     "deepmerge": "^1.5.0"
   },
   "peerDependencies": {

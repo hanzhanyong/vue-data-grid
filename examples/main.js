@@ -4,16 +4,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './app.vue';
-import yixinglabUI from '../src/index';
+import testIndex from '../src/index';
 // import locale from '../src/locale/lang/en-US';
 import locale from '../src/locale/lang/zh-CN';
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-default/index.css';
 
-Vue.use(ElementUI);
 Vue.use(VueRouter);
-Vue.use(yixinglabUI, { locale });
+Vue.use(testIndex, { locale });
 
 // 开启debug模式
 Vue.config.debug = true;
