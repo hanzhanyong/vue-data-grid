@@ -21,8 +21,8 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         path: path.join(__dirname, '../examples/dist'),
         publicPath: '',
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js'
+        filename: 'vue-data-grid-edit.js',
+        chunkFilename: 'vue-data-grid-edit.chunk.js'
     },
     resolve: {
         alias: {

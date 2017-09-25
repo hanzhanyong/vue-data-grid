@@ -1,6 +1,6 @@
 {
   "name": "vue-data-grid-edit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "title": "vue-data-grid-edit",
   "description": "A data-grid components Library with Vue.js 2.0",
   "keywords": [
@@ -11,7 +11,7 @@
     "vue2",
     "excel"
   ],
-  "main": "dist/[name].js",
+  "main": "dist/vue-data-grid-edit.js",
   "files": [
     "dist",
     "src"

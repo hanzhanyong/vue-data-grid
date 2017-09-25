@@ -17,8 +17,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist/locale'),
         publicPath: '/dist/locale/',
-        filename: '[name].js',
-        library: '[name]/locale',
+        filename: 'vue-data-grid-edit.js',
+        library: 'vue-data-grid-edit/locale',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },

@@ -1,4 +1,4 @@
-# yx-view
+# vue-data-grid-edit
 
 > A data-grid components Library with Vue.js 2.0
 
@@ -12,9 +12,10 @@ npm install vue-data-grid -S
 ## Quick Start
 ``` javascript
 import Vue from 'vue'
-import Grid from 'vue-data-grid'
+import DataGridEdit from 'vue-data-grid-edit'
+import 'vue-data-grid-edit/styles/datagrid.css';
 
-Vue.use(Grid)
+Vue.use(DataGridEdit)
 
 
 ```

@@ -12,8 +12,8 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: '[name].min.js',
-        library: '[name]',
+        filename: 'vue-data-grid-edit.min.js',
+        library: 'vue-data-grid-edit',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
