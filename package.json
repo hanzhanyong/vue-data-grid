@@ -1,9 +1,8 @@
 {
-  "name": "vue-data-grid",
+  "name": "vue-data-grid-edit",
   "version": "0.1.0",
-  "title": "vue-data-grid",
+  "title": "vue-data-grid-edit",
   "description": "A data-grid components Library with Vue.js 2.0",
-  "homepage": "http://www.12306.cn",
   "keywords": [
     "grid",
     "table",
