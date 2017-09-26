@@ -1,6 +1,6 @@
 <template>
     <div>
-        <VueDataGrid :fields="fields" :items="excelList" :onItemClickCallBack="onItemClick" :rowsHeight="rowsHeight" width="60%" height="320px"> </VueDataGrid>
+        <VueDataGrid :fields="fields" :firstItem="firstItem" :items="excelList" :onItemClickCallBack="onItemClick" :rowsHeight="rowsHeight" width="60%" height="320px"> </VueDataGrid>
     </div>
 </template>
 <script>
@@ -26,6 +26,31 @@
                         name: '年龄',
                         type: 'string',
                         edit: true,
+                        width: 100
+                    },
+                    {
+                        name: '位置',
+                        type: 'string',
+                        edit: false
+                    }
+                ],
+                firstItem: [
+                    {
+                        name: '',
+                        type: 'string',
+                        edit: false,
+                        width: 100
+                    },
+                    {
+                        name: '',
+                        type: 'string',
+                        edit: false,
+                        width: 100
+                    },
+                    {
+                        name: '年龄',
+                        type: 'string',
+                        edit: false,
                         width: 100
                     },
                     {

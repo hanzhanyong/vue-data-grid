@@ -1,8 +1,7 @@
 <template>
-    <div class="greadheader"
-    :style="'width:'+width + ';background-color:'+headerColor+ ';'">
+    <div  class="greadheader" :style="'width:'+width">
         <div v-for="field in fields"
-            :style="styleClass(field)">
+            :style="styleClass2(field)">
             {{field.name}}
         </div>
     </div>
