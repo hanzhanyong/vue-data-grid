@@ -1,8 +1,8 @@
 <template>
     <div class="grid">
-        <GridHeader :fields="fields" :width="width" :height="rowsHeight"/>
-        <GridHeader2 v-if="firstItem && firstItem.length>0" :fields="firstItem" :width="width" :height="rowsHeight"/>
-        <GridBody :items="items" :fields="fields" :width="width" :height="height" :rowsHeight="rowsHeight" :onItemClickCallBack="onItemClickCallBack" />
+        <GridHeader :items="items" :fields="fields" :firstItem="firstItem" :width="width" :height="height" :rowsHeight="rowsHeight"/>
+        <GridHeader2 v-if="firstItem && firstItem.length>0" :items="items" :fields="fields" :firstItem="firstItem" :width="width" :height="height" :rowsHeight="rowsHeight"/>
+        <GridBody :items="items" :fields="fields" :firstItem="firstItem" :width="width" :height="height" :rowsHeight="rowsHeight" :onItemClickCallBack="onItemClickCallBack" />
     </div>
 </template>
 <script>

@@ -69,8 +69,8 @@ export default {
             else {
                 _width = 'flex:1;';
             }
-            let _style = _width+ 'height:' + this.height + 'px;line-height:' + 
-            this.height + 'px;font-weight: bold;border:'+this.borderStyle+';';
+            let _style = _width+ 'height:' + this.rowsHeight + 'px;line-height:' + 
+            this.rowsHeight + 'px;font-weight: bold;border:'+this.borderStyle+';';
             return _style;
         },
         styleClass2: function(field) {

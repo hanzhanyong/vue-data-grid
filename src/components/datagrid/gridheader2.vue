@@ -1,6 +1,6 @@
 <template>
     <div  class="greadheader" :style="'width:'+width">
-        <div v-for="field in fields"
+        <div v-for="field in firstItem"
             :style="styleClass2(field)">
             {{field.name}}
         </div>
