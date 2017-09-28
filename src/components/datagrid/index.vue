@@ -2,7 +2,7 @@
     <div class="grid">
         <GridHeader :items="items" :fields="fields" :firstItem="firstItem" :width="width" :height="height" :rowsHeight="rowsHeight"/>
         <GridHeader2 v-if="firstItem && firstItem.length>0" :items="items" :fields="fields" :firstItem="firstItem" :width="width" :height="height" :rowsHeight="rowsHeight"/>
-        <GridBody :items="items" :fields="fields" :firstItem="firstItem" :width="width" :height="height" :rowsHeight="rowsHeight" :onItemClickCallBack="onItemClickCallBack" />
+        <GridBody :items="items" :fields="fields" :firstItem="firstItem" :width="width" :height="height" :rowsHeight="rowsHeight" :onItemClickCallBack="onItemClickCallBack" :onItemChangeCallBack="onItemChangeCallBack" />
     </div>
 </template>
 <script>

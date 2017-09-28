@@ -43,7 +43,8 @@ export default {
         firstItem: { type: Array, required: true },
         items: { type: Array, required: true },
         fields: { type: Array, required: true },
-        onItemClickCallBack: Function
+        onItemClickCallBack: Function,
+        onItemChangeCallBack: Function
     },
     computed: {
         fieldLength: function() {
@@ -96,9 +97,19 @@ export default {
             // }
             return (num!==0);
         },
-        onItemClick: function(item, key, value, index, type, icontype) {
+        onItemFocus: function($event,item, key, value, index, type) {
+            if (type === 'date') {
+                // $event.target.innerText = '2017-09-28';
+                // alert('www"');
+                // item.showdatepicker = true;
+            }
+        },
+        onItemClick: function($event,item, key, value, index, type, icontype) {
             // debugger;
-            if (icontype) {
+            if (type === 'icon') {
+                if(this.onItemClickCallBack) {
+                    if(!this.onItemClickCallBack(item, key, value, index, type, icontype)) return;
+                }
                 if (icontype === 'add') {
                     let _item = {};
                     // debugger;
@@ -114,19 +125,44 @@ export default {
                     this.items.splice(index, 1);
                     // console.log(this.items.length);
                 }
-            } else {
+            }
+            else {
                 if (this.onItemClickCallBack) this.onItemClickCallBack(item, key, value, index, type, icontype);
             }
         },
-        inputHandler: function (item,key,$event) {
+        inputHandler: function (item,key,event) {
+            if(event.keyCode ===13) {
+                // console.log(key);
+            }
             // console.log($event);
-            item[key] = $event.target.innerText;
+            // item[key] = $event.target.innerText;
             // for (let i=0; i<this.items.length;i++) {
             //     let _item = this.items[i];
             //     for (let ikey in _item) {
             //         console.log(_item[ikey])
             //     } 
             // }
+            // console.log(item[key]);
+        },
+        onItemChange: function (item,key,type,$event) {
+            // console.log('onItemChange1:' + item[key]);
+            let innerText = $event.target.innerText;
+            // debugger;
+            // let rindex = innerText.indexOf('\r');
+            // if (rindex>=0) {
+            //     innerText = innerText.substr(0,rindex);
+            // }
+            if (type === 'date') {
+                if (innerText.indexOf('&lt;') > 0|| innerText.indexOf('<') > 0) {
+                    innerText = innerText.substr(0,10);
+                }
+            }
+            let itemvalue = item[key] + '';
+            if (itemvalue === innerText) return;
+            item[key] = innerText;
+            // console.log('onItemChange2:' + item[key]);
+
+            if (this.onItemChangeCallBack) this.onItemChangeCallBack(item,key);
         },
         styleBodyClass: function(field,itemindex) {
             // debugger;
