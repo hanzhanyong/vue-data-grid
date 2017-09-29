@@ -4,7 +4,8 @@
         <VueDataGrid :fields="fields" :firstItem="firstItem" :items="excelList" 
         :onItemClickCallBack="onItemClick"
         :onItemChangeCallBack="onItemChange"
-        :rowsHeight="rowsHeight" width="60%" height="320px"> </VueDataGrid>
+        :onItemLastCallBack="onItemLast"
+        :rowsHeight="rowsHeight" width="80%" height="320px"> </VueDataGrid>
 
     </div>
 </template>
@@ -23,7 +24,8 @@
                     },
                     {
                         name: '名称',
-                        type: 'string',
+                        type: 'float',
+                        hide: false,
                         edit: true,
                         width: 100
                     },
@@ -31,11 +33,12 @@
                         name: '出生日期',
                         type: 'date',
                         edit: true,
-                        width: 100
+                        width: 150
                     },
                     {
                         name: '年龄',
                         type: 'string',
+                        hide: true,
                         edit: true,
                         width: 100
                     },
@@ -62,7 +65,7 @@
                         name: '',
                         type: 'string',
                         edit: false,
-                        width: 100
+                        width: 150
                     },
                     {
                         name: '年龄',
@@ -78,73 +81,73 @@
                 ],
                 excelList: [
                     {
-                        name: 'a',
+                        name: 123.5,
                         birthday: '2010-09-25',
                         age: 1,
                         position: '2017-09-25'
                     },
                     {
-                        name: 'h',
+                        name: 56,
                         birthday: '2010-09-25',
                         age: 8,
                         position: '哈哈哈'
                     },
                     {
-                        name: 'f',
+                        name: 434,
                         birthday: '2010-09-25',
                         age: 6,
                         position: '2017-09-25'
                     },
                     {
-                        name: 'c',
+                        name: 565,
                         birthday: '2010-09-25',
                         age: 3,
                         position: '呲呲呲'
                     },
                     {
-                        name: 'g',
+                        name: 53,
                         birthday: '2010-09-25',
                         age: 7,
                         position: '哥哥哥'
                     },
                     {
-                        name: 'e',
+                        name: 67,
                         birthday: '2010-09-25',
                         age: 5,
                         position: '额额额'
                     },
                     {
-                        name: 'a',
+                        name: 78,
                         birthday: '2010-09-25',
                         age: 1,
                         position: '阿阿阿'
                     },
                     {
-                        name: 'h',
+                        name: 77,
                         birthday: '2010-09-25',
                         age: 8,
                         position: '哈哈哈'
                     },
                     {
-                        name: 'f',
+                        name: 864,
                         birthday: '2010-09-25',
                         age: 6,
                         position: '发发发'
                     },
                     {
-                        name: 'c',
+                        name: 2343,
                         birthday: '2010-09-25',
                         age: 3,
                         position: '呲呲呲'
                     },
                     {
-                        name: 'g',
+                        name: 444,
                         birthday: '2010-09-25',
                         age: 7,
                         position: '哥哥哥'
                     },
                     {
-                        name: 'e',
+                        name: 5544,
                         birthday: '2010-09-25',
                         age: 5,
                         position: '额额额'
@@ -160,6 +163,9 @@
             },
             onItemChange: function(item,key) {
                 console.log('item.name:' + item.name + '     key:' + key);
+            },
+            onItemLast: function() {
+                alert('已经是最后一个数据了！');
             },
             onReplace1: function() {
                 let _data = [];

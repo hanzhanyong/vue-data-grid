@@ -44,6 +44,7 @@ export default {
         items: { type: Array, required: true },
         fields: { type: Array, required: true },
         onItemClickCallBack: Function,
+        onItemLastCallBack: Function,
         onItemChangeCallBack: Function
     },
     computed: {
@@ -72,6 +73,9 @@ export default {
             }
             let _style = _width+ 'height:' + this.rowsHeight + 'px;line-height:' + 
             this.rowsHeight + 'px;font-weight: bold;border:'+this.borderStyle+';';
+            if (field.hide) {
+                _style += 'display:none;';
+            }
             return _style;
         },
         styleClass2: function(field) {
@@ -131,32 +135,67 @@ export default {
             }
         },
         inputHandler: function (item,key,event) {
-            if(event.keyCode ===13) {
-                // console.log(key);
-            }
-            // console.log($event);
-            // item[key] = $event.target.innerText;
-            // for (let i=0; i<this.items.length;i++) {
-            //     let _item = this.items[i];
-            //     for (let ikey in _item) {
-            //         console.log(_item[ikey])
-            //     } 
-            // }
-            // console.log(item[key]);
+            if(event.keyCode===13)
+                event.keyCode = 9;
+            // alert(event.keyCode);
+            // console.log(event.keyCode);
         },
-        onItemChange: function (item,key,type,$event) {
-            // console.log('onItemChange1:' + item[key]);
-            let innerText = $event.target.innerText;
-            // debugger;
-            // let rindex = innerText.indexOf('\r');
-            // if (rindex>=0) {
-            //     innerText = innerText.substr(0,rindex);
-            // }
-            if (type === 'date') {
-                if (innerText.indexOf('&lt;') > 0|| innerText.indexOf('<') > 0) {
-                    innerText = innerText.substr(0,10);
+        onKeyUp: function (fields,item,key,type,rowsCount,columsCount,rowIndex,columIndex,$event) {
+            //value=value.replace(/[^\d]/,'')
+            
+            if($event.keyCode===13)
+            {
+                // debugger;
+                var nextEle = null;
+                var nextLine = true;
+                if (columIndex < columsCount - 1) {
+                    for (var i=columIndex+1;i<columsCount;i++){
+                        var field = fields[i];
+                        if (field.hide || field.type==='icon') continue;
+                        columIndex = i;
+                        break;
+                    }
+                    if (columIndex < columsCount) {
+                        nextLine = false;
+                        nextEle = $event.target.parentElement.parentElement.children[columIndex].children[0];
+                    }
+                }
+                
+                if(nextLine && rowIndex < rowsCount - 1) {
+                    // debugger;
+                    columIndex = 0;
+                    for ( i=columIndex;i<columsCount;i++){
+                        field = fields[i];
+                        if (field.hide || field.type==='icon') continue;
+                        columIndex = i;
+                        break;
+                    }
+                    // console.log($event.target.parentElement.parentElement.parentElement);
+                    if (columIndex < columsCount) {
+                        nextEle = $event.target.parentElement.parentElement.parentElement.children[rowIndex+1].children[columIndex].children[0];
+                    }
+                }
+                if (!nextEle){
+                    //alert('新增加一行了');
+                    if(this.onItemLastCallBack) this.onItemLastCallBack();
+                }
+                // console.log(nextEle);
+                if(nextEle) nextEle.focus();
+                return;
+            }
+            if (type === 'float' || type === 'int') {
+                event.target.value=event.target.value.replace(/[^\d.]/g,'');
+                if (event.target.value === '') event.target.value = '0';
+                var dotIndex = event.target.value.indexOf('.');
+                if (dotIndex > 0) {
+                    event.target.value = event.target.value.split('.')[0] + '.' + event.target.value.split('.')[1].split('.')[0];
                 }
             }
+        },
+        onItemChange: function (item,key,type,$event) {
+            // console.log('onItemChange1:' + item[key] + '   value:'+$event.target.value);
+            let innerText = $event.target.value;
+
             let itemvalue = item[key] + '';
             if (itemvalue === innerText) return;
             item[key] = innerText;
@@ -180,6 +219,10 @@ export default {
             'px;line-height:' + this.rowsHeight + 'px;border:'+this.borderStyle +';';
             if (itemindex % 2===0) _style = _style + 'background-color: '+this.bodyColor2+';';
             else _style = _style + 'background-color: '+this.bodyColor+';';
+
+            if (field.hide) {
+                _style += 'display:none;';
+            }
             return _style;
         }
     }
