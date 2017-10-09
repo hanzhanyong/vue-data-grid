@@ -186,11 +186,24 @@ export default {
                 return;
             }
             if (type === 'float' || type === 'int') {
-                event.target.value=event.target.value.replace(/[^\d.]/g,'');
+                event.target.value=event.target.value.replace(/[^0-9|^\-|^\.]/g,'');
                 if (event.target.value === '') event.target.value = '0';
                 var dotIndex = event.target.value.indexOf('.');
                 if (dotIndex > 0) {
                     event.target.value = event.target.value.split('.')[0] + '.' + event.target.value.split('.')[1].split('.')[0];
+                }
+                var splitIndex = event.target.value.lastIndexOf('-');
+                if (splitIndex > 0) {
+                    var values = event.target.value.split('-');
+                    var setvalue = event.target.value;
+                    if (setvalue.substr(0,1) === '-') {
+                        setvalue = '-';
+                    } else setvalue = '';
+
+                    event.target.value = setvalue;
+                    for (var iv=0;iv<values.length;iv++) {
+                        event.target.value += values[iv];
+                    }
                 }
             }
         },

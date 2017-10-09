@@ -47,19 +47,19 @@
                     },
                     {
                         name: '收入',
-                        type: 'string',
+                        type: 'float',
                         edit: true,
                         width: '10%'
                     },
                     {
                         name: '支出',
-                        type: 'string',
+                        type: 'float',
                         edit: true,
                         width: '10%'
                     },
                     {
                         name: '余额',
-                        type: 'string',
+                        type: 'float',
                         edit: false,
                         width: '12%'
                     },
