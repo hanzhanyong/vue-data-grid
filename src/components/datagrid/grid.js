@@ -149,15 +149,17 @@ export default {
                 var nextEle = null;
                 var nextLine = true;
                 if (columIndex < columsCount - 1) {
+                    var curcolumIndex = columIndex;
                     for (var i=columIndex+1;i<columsCount;i++){
                         var field = fields[i];
-                        if (field.hide || field.type==='icon') continue;
-                        columIndex = i;
+                        if (field.edit===false || field.hide || field.type==='icon') continue;
+                        curcolumIndex = i;
                         break;
                     }
-                    if (columIndex < columsCount) {
+                    
+                    if (curcolumIndex < columsCount && curcolumIndex !== columIndex) {
                         nextLine = false;
-                        nextEle = $event.target.parentElement.parentElement.children[columIndex].children[0];
+                        nextEle = $event.target.parentElement.parentElement.children[curcolumIndex].children[0];
                     }
                 }
                 
@@ -166,7 +168,7 @@ export default {
                     columIndex = 0;
                     for ( i=columIndex;i<columsCount;i++){
                         field = fields[i];
-                        if (field.hide || field.type==='icon') continue;
+                        if (field.edit===false || field.hide || field.type==='icon') continue;
                         columIndex = i;
                         break;
                     }

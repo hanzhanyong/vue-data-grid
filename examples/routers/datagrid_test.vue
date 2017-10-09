@@ -20,138 +20,118 @@
                         name: '操作',
                         type: 'icon',
                         edit: true,
-                        width: 100
+                        width: '12%'
                     },
                     {
-                        name: '名称',
-                        type: 'float',
-                        hide: false,
+                        name: 'ID',
+                        type: 'string',
                         edit: true,
-                        width: 100
+                        width: '6%'
                     },
                     {
-                        name: '出生日期',
+                        name: '日期',
                         type: 'date',
                         edit: true,
-                        width: 150
+                        width: '16%'
                     },
                     {
-                        name: '年龄',
+                        name: '标签',
                         type: 'string',
-                        hide: true,
-                        edit: true,
-                        width: 100
+                        edit: false,
+                        width: '9%'
                     },
                     {
-                        name: '位置',
+                        name: '摘要',
                         type: 'string',
                         edit: true
-                    }
+                    },
+                    {
+                        name: '收入',
+                        type: 'string',
+                        edit: true,
+                        width: '10%'
+                    },
+                    {
+                        name: '支出',
+                        type: 'string',
+                        edit: true,
+                        width: '10%'
+                    },
+                    {
+                        name: '余额',
+                        type: 'string',
+                        edit: false,
+                        width: '12%'
+                    },
                 ],
                 firstItem: [
                     {
                         name: '',
+                        type: 'icon',
+                        edit: false,
+                        width: '12%'
+                    },
+                     {
+                        name: '',
                         type: 'string',
                         edit: false,
-                        width: 100
+                        width: '6%'
                     },
                     {
                         name: '',
                         type: 'string',
                         edit: false,
-                        width: 100
+                        width: '10%'
                     },
-                    {
+                     {
                         name: '',
                         type: 'string',
-                        edit: false,
-                        width: 150
+                        edit: true,
+                        width: '9%'
                     },
                     {
-                        name: '年龄',
-                        type: 'string',
-                        edit: false,
-                        width: 100
-                    },
-                    {
-                        name: '位置',
+                        name: '期初余额',
                         type: 'string',
                         edit: false
-                    }
+                    },
+                    {
+                        name: '',
+                        type: 'string',
+                        edit: false,
+                        width: '10%'
+                    },
+                    {
+                        name: '',
+                        type: 'string',
+                        edit: false,
+                        width: '10%'
+                    },
+                    {
+                        name: 123,
+                        type: 'string',
+                        edit: false,
+                        width: '12%'
+                    },
                 ],
                 excelList: [
                     {
-                        name: 123.5,
-                        birthday: '2010-09-25',
-                        age: 1,
-                        position: '2017-09-25'
+                        id: 1,
+                        date: '2017-09-25',
+                        tag: 'qt',
+                        desc: '描述内容',
+                        income: 12.43,
+                        expense: 13,
+                        value: 89
                     },
                     {
-                        name: 56,
-                        birthday: '2010-09-25',
-                        age: 8,
-                        position: '哈哈哈'
-                    },
-                    {
-                        name: 434,
-                        birthday: '2010-09-25',
-                        age: 6,
-                        position: '2017-09-25'
-                    },
-                    {
-                        name: 565,
-                        birthday: '2010-09-25',
-                        age: 3,
-                        position: '呲呲呲'
-                    },
-                    {
-                        name: 53,
-                        birthday: '2010-09-25',
-                        age: 7,
-                        position: '哥哥哥'
-                    },
-                    {
-                        name: 67,
-                        birthday: '2010-09-25',
-                        age: 5,
-                        position: '额额额'
-                    },
-                    {
-                        name: 78,
-                        birthday: '2010-09-25',
-                        age: 1,
-                        position: '阿阿阿'
-                    },
-                    {
-                        name: 77,
-                        birthday: '2010-09-25',
-                        age: 8,
-                        position: '哈哈哈'
-                    },
-                    {
-                        name: 864,
-                        birthday: '2010-09-25',
-                        age: 6,
-                        position: '发发发'
-                    },
-                    {
-                        name: 2343,
-                        birthday: '2010-09-25',
-                        age: 3,
-                        position: '呲呲呲'
-                    },
-                    {
-                        name: 444,
-                        birthday: '2010-09-25',
-                        age: 7,
-                        position: '哥哥哥'
-                    },
-                    {
-                        name: 5544,
-                        birthday: '2010-09-25',
-                        age: 5,
-                        position: '额额额'
-                    },
+                        id: 2,
+                        date: '2017-09-25',
+                        tag: 'qita',
+                        desc: '描述内容',
+                        income: 12.43,
+                        expense: 13,
+                        value: 89
+                    }
                 ]
             }
         },

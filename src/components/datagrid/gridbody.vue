@@ -17,7 +17,13 @@
             @click="onItemClick($event, item,key,value,index,fields[fieldStartIndex+index].type,null)"
             :value="value" />
 
-            <input v-else type="text" class="inputtext"
+            <input v-else-if="fields[fieldStartIndex+index].edit" type="text" class="inputtext" 
+            @keyup="onKeyUp(fields,item,key,fields[fieldStartIndex+index].type,items.length,fields.length,itemindex,fieldStartIndex+index,$event)"
+            @blur="onItemChange(item,key,fields[fieldStartIndex+index].type,$event)"
+            @click="onItemClick($event, item,key,value,index,fields[fieldStartIndex+index].type,null)"
+            :value="value" />    
+
+            <input v-else type="text" class="inputtext" readonly="true"
             @keyup="onKeyUp(fields,item,key,fields[fieldStartIndex+index].type,items.length,fields.length,itemindex,fieldStartIndex+index,$event)"
             @blur="onItemChange(item,key,fields[fieldStartIndex+index].type,$event)"
             @click="onItemClick($event, item,key,value,index,fields[fieldStartIndex+index].type,null)"
