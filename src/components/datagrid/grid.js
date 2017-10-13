@@ -187,6 +187,13 @@ export default {
             }
             if (type === 'float' || type === 'int') {
                 event.target.value=event.target.value.replace(/[^0-9|^\-|^\.]/g,'');
+                if (event.target.value==='00') event.target.value = '0';
+                if (event.target.value.substr(0,1)==='-') {
+                    if (event.target.value.length>2 && event.target.value.substr(1,1)==='0' && event.target.value.substr(2,1)!=='0' && event.target.value.substr(2,1)!=='.' ) event.target.value = '-'+event.target.value.substr(2,event.target.value.length-2);                    
+                } else {
+                    if (event.target.value.length>1 && event.target.value.substr(0,1)==='0' && event.target.value.substr(1,1)!=='0' && event.target.value.substr(1,1)!=='.' ) event.target.value = event.target.value.substr(1,event.target.value.length-1);
+                }
+                
                 if (event.target.value === '') event.target.value = '0';
                 var dotIndex = event.target.value.indexOf('.');
                 if (dotIndex > 0) {
