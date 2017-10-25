@@ -52,7 +52,16 @@ export default {
             return this.fields.length;
         },
         fieldStartIndex: function() {
-            return this.fields[0].type === 'icon' || this.fields[0].type === 'button'? 1 : 0;
+            let _startIndex  = 0;
+            if (this.fields[0].type === 'icon' || this.fields[0].type === 'button') {
+                for (let i=0; i<this.fields.length; i++) {
+                    let f = this.fields[i];
+                    if (f.type === 'icon' || f.type === 'button') {
+                        _startIndex += 1;
+                    }
+                }
+            }
+            return _startIndex;
         }
     },
     watch: {  

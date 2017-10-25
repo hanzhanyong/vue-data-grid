@@ -1,13 +1,18 @@
 <template>
 <div>
     <div class="gridbody" v-for="(item,itemindex) in items" :style="'width:'+width">
-        <div v-if="fields[0].type === 'icon' || fields[0].type === 'button'"
-             :style="styleBodyClass(fields[0],itemindex)">
-            <i class="icon iconfont icon-jiahao"  :style="'color:' + iconColor + ';'" @click="onItemClick(item,null,null,itemindex,fields[0].type,'add')" />
-            <i class="icon iconfont icon-shanchu" :style="'color:' + iconColor + ';'" @click="onItemClick(item,null,null,itemindex,fields[0].type,'del')" />
+        <div v-for="(field, fieldIndex) in fields" v-if="(fields[0].type === 'icon' || fields[0].type === 'button') && (field.type === 'icon' || field.type === 'button')"
+            :style="styleBodyClass(field,itemindex)">
+            <div v-if="field.type === 'icon'">
+                <i  v-for="(btn, btnIndex) in field.button" :class="'icon iconfont icon-'+btn.type"  :style="'color:' + iconColor + ';margin:0px 6px;'" 
+                @click="onItemClick($event,item,null,null,itemindex,field.type,btn.type)" />
+            </div>
+            <div v-else-if="field.type === 'button'">
+                <a class="linkbutton" v-for="(btn, btnIndex) in field.button" 
+                @click="onItemClick($event,item,null,null,itemindex,field.type,btn.type)" href="javascript:void(0);">{{ btn.name }}</a>
+            </div>
         </div>
-        <div
-            v-for="(value, key ,index) in item"
+        <div v-for="(value, key ,index) in item"
             :style="styleBodyClass(fields[fieldStartIndex+index],itemindex)">
 
             <input v-if="fields[fieldStartIndex+index].type === 'date'"
@@ -29,10 +34,16 @@
             @click="onItemClick($event, item,key,value,index,fields[fieldStartIndex+index].type,null)"
             :value="value" />     
         </div>
-        <div v-if="fields[fieldLength-1].type === 'icon' || fields[fieldLength-1].type === 'button'"
-            :style="styleBodyClass(fields[fieldLength-1],itemindex)">
-            <i class="icon iconfont icon-jiahao" :style="'color:' + iconColor + ';'" @click="onItemClick(item,null,null,itemindex,fields[0].type,'add')"></i>
-            <i class="icon iconfont icon-shanchu" :style="'color:' + iconColor + ';'" @click="onItemClick(item,null,null,itemindex,fields[0].type,'del')"></i>
+        <div v-for="(field, fieldIndex) in fields" v-if="(fields[fieldLength-1].type === 'icon' || fields[fieldLength-1].type === 'button') && (field.type === 'icon' || field.type === 'button')"
+            :style="styleBodyClass(field,itemindex)">
+            <div v-if="field.type === 'icon'">
+                <i  v-for="(btn, btnIndex) in field.button" :class="'icon iconfont icon-'+btn.type"  :style="'color:' + iconColor + ';margin:0px 6px;'" 
+                @click="onItemClick($event,item,null,null,itemindex,field.type,btn.type)" />
+            </div>
+            <div v-else-if="field.type === 'button'">
+                <a class="linkbutton" v-for="(btn, btnIndex) in field.button" 
+                @click="onItemClick($event,item,null,null,itemindex,field.type,btn.type)" href="javascript:void(0);">{{ btn.name }}</a>
+            </div>
         </div>
     </div>
 </div>
@@ -44,7 +55,7 @@ import gridjs from './grid.js';
 export default {
     data() {
         return {
-            date: '2016-10-16'
+            date: '2016-10-16',
         }
     },
     props: gridjs.props,
