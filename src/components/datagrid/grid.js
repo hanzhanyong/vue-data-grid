@@ -223,7 +223,7 @@ export default {
                 }
             }
         },
-        onItemChange: function (item,key,type,$event) {
+        onItemChange: function (item,key,index,type,$event) {
             // console.log('onItemChange1:' + item[key] + '   value:'+$event.target.value);
             let innerText = $event.target.value;
 
@@ -232,7 +232,7 @@ export default {
             item[key] = innerText;
             // console.log('onItemChange2:' + item[key]);
 
-            if (this.onItemChangeCallBack) this.onItemChangeCallBack(item,key);
+            if (this.onItemChangeCallBack) this.onItemChangeCallBack(item,key,index,type);
         },
         styleBodyClass: function(field,itemindex) {
             // debugger;

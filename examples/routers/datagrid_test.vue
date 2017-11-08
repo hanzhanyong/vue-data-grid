@@ -17,6 +17,38 @@
                 rowsHeight: 35,
                 fields: [
                     {
+                        name: '操作',
+                        type: 'icon',
+                        edit: true,
+                        width: '12%',
+                        button: [
+                            {
+                                name: '添加',
+                                type: 'add'
+                            },
+                            {
+                                name: '移除',
+                                type: 'del'
+                            }
+                        ] 
+                    },
+                    {
+                        name: '操作2',
+                        type: 'button',
+                        edit: true,
+                        width: '12%',
+                        button: [
+                            {
+                                name: '添加',
+                                type: 'add_button'
+                            },
+                            {
+                                name: '移除',
+                                type: 'del_button'
+                            }
+                        ] 
+                    },
+                    {
                         name: 'ID',
                         type: 'string',
                         edit: true,
@@ -56,41 +88,21 @@
                         type: 'float',
                         edit: false,
                         width: '12%'
-                    },
-                    {
-                        name: '操作',
-                        type: 'icon',
-                        edit: true,
-                        width: '12%',
-                        button: [
-                            {
-                                name: '添加',
-                                type: 'add'
-                            },
-                            {
-                                name: '移除',
-                                type: 'del'
-                            }
-                        ] 
-                    },
-                    {
-                        name: '操作2',
-                        type: 'button',
-                        edit: true,
-                        width: '12%',
-                        button: [
-                            {
-                                name: '添加',
-                                type: 'add_button'
-                            },
-                            {
-                                name: '移除',
-                                type: 'del_button'
-                            }
-                        ] 
                     }
                 ],
                 firstItem: [
+                    {
+                        name: '',
+                        type: 'icon',
+                        edit: false,
+                        width: '12%'
+                    },
+                    {
+                        name: '',
+                        type: 'button',
+                        edit: false,
+                        width: '12%'
+                    },
                     {
                         name: '',
                         type: 'string',
@@ -131,18 +143,6 @@
                         type: 'string',
                         edit: false,
                         width: '12%'
-                    },
-                    {
-                        name: '',
-                        type: 'icon',
-                        edit: false,
-                        width: '12%'
-                    },
-                    {
-                        name: '',
-                        type: 'button',
-                        edit: false,
-                        width: '12%'
                     }
                 ],
                 excelList: [
@@ -169,12 +169,12 @@
         },
         methods: {
             onItemClick: function(item, key, value, index, type, icontype) {
-                console.log(' key: ' + key + '    value: ' + value + '   columnindex: ' + index +'    type: ' + type + '     icontype: ' + icontype);
+                console.log('onItemClick key: ' + key + '    value: ' + value + '   columnindex: ' + index +'    type: ' + type + '     icontype: ' + icontype);
                 // true 执行内部操作   false 不执行
                 return true;
             },
-            onItemChange: function(item,key) {
-                console.log('item.name:' + item.name + '     key:' + key);
+            onItemChange: function(item,key,index,type) {
+                console.log('onItemChange item.date:' + item.date + '     key:' + key + '  index:'+index+ '  type:'+type);
             },
             onItemLast: function() {
                 alert('已经是最后一个数据了！');
